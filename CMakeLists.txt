@@ -1,18 +1,23 @@
 cmake_minimum_required(VERSION 3.18)
+
+# Set a default CUDA architecture if running in a CI environment without a physical GPU
+option(CI_BUILD "Building in CI environment without physical GPU" OFF)
+if(CI_BUILD)
+  set(CMAKE_CUDA_COMPILER_FORCED TRUE)
+  set(CMAKE_CUDA_ARCHITECTURES 70)  # Use a default architecture for compilation
+else()
+  set(CMAKE_CUDA_ARCHITECTURES 60 70 75 80 86)
+endif()
+
 project(gpu_image_processing LANGUAGES CXX CUDA)
 
 # Set C++ standard
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Find CUDA
-find_package(CUDA 11.0 REQUIRED)
-include_directories(${CUDA_INCLUDE_DIRS})
-
-# Set CUDA flags
+# Set CUDA standards and flags
 set(CMAKE_CUDA_STANDARD 14)
 set(CMAKE_CUDA_STANDARD_REQUIRED ON)
-set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -arch=sm_60")  # Minimum compute capability 6.0
 
 # Set include directories
 include_directories(
@@ -54,7 +59,7 @@ set_target_properties(gpu_image_processing PROPERTIES CUDA_SEPARABLE_COMPILATION
 foreach(example_file ${EXAMPLES})
     get_filename_component(example_name ${example_file} NAME_WE)
     add_executable(${example_name} ${example_file})
-    target_link_libraries(${example_name} gpu_image_processing ${CUDA_LIBRARIES})
+    target_link_libraries(${example_name} gpu_image_processing)
     set_target_properties(${example_name} PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
 endforeach()
 
@@ -64,7 +69,7 @@ if(BUILD_TESTING)
     foreach(test_file ${TESTS})
         get_filename_component(test_name ${test_file} NAME_WE)
         add_executable(${test_name} ${test_file})
-        target_link_libraries(${test_name} gpu_image_processing ${CUDA_LIBRARIES})
+        target_link_libraries(${test_name} gpu_image_processing)
         set_target_properties(${test_name} PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
         add_test(NAME ${test_name} COMMAND ${test_name})
     endforeach()
@@ -76,25 +81,14 @@ install(TARGETS gpu_image_processing
     LIBRARY DESTINATION lib
     RUNTIME DESTINATION bin
 )
-
 install(FILES ${HEADERS} DESTINATION include/gpu_image_processing)
 
 # Option to build examples
 option(BUILD_EXAMPLES "Build the examples" ON)
 
-# Build examples
-if(BUILD_EXAMPLES)
-    foreach(example_file ${EXAMPLES})
-        get_filename_component(example_name ${example_file} NAME_WE)
-        add_executable(${example_name} ${example_file})
-        target_link_libraries(${example_name} gpu_image_processing ${CUDA_LIBRARIES})
-    endforeach()
-endif()
-
 # Print configuration summary
 message(STATUS "Configuration Summary:")
-message(STATUS "  CUDA version: ${CUDA_VERSION}")
-message(STATUS "  CUDA architecture: ${CMAKE_CUDA_FLAGS}")
+message(STATUS "  CUDA architectures: ${CMAKE_CUDA_ARCHITECTURES}")
 message(STATUS "  C++ standard: ${CMAKE_CXX_STANDARD}")
 message(STATUS "  Build type: ${CMAKE_BUILD_TYPE}")
 message(STATUS "  Building examples: ${BUILD_EXAMPLES}")
