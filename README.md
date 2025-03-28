@@ -168,7 +168,7 @@ The optimized implementation achieves significant speedups compared to the unopt
 *Measured on an NVIDIA RTX 4080 Ti with a 1920x1080 image*
 
 <p align="center">
-  <img src="docs/images/optimization_impact.png" alt="Optimization Impact" width="600"/>
+  <img src="docs/images/Optimization Impact.png" alt="Optimization Impact" width="600"/>
 </p>
 
 ## 📚 Documentation
