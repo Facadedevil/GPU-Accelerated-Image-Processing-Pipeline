@@ -1,12 +1,20 @@
 cmake_minimum_required(VERSION 3.18)
 
-# Set a default CUDA architecture if running in a CI environment without a physical GPU
+# Handle CI environment
 option(CI_BUILD "Building in CI environment without physical GPU" OFF)
+
+# Force set CUDA language before project() declaration in CI environments
 if(CI_BUILD)
-  set(CMAKE_CUDA_COMPILER_FORCED TRUE)
-  set(CMAKE_CUDA_ARCHITECTURES 70)  # Use a default architecture for compilation
-else()
-  set(CMAKE_CUDA_ARCHITECTURES 60 70 75 80 86)
+  set(CMAKE_CUDA_ARCHITECTURES 70)
+  
+  # Set environment variable for CUDA compiler if not already set
+  if(NOT DEFINED ENV{CUDACXX} AND NOT DEFINED CMAKE_CUDA_COMPILER)
+    if(EXISTS "/usr/local/cuda/bin/nvcc")
+      set(CMAKE_CUDA_COMPILER "/usr/local/cuda/bin/nvcc")
+    elseif(EXISTS "/usr/local/cuda-11.8/bin/nvcc")
+      set(CMAKE_CUDA_COMPILER "/usr/local/cuda-11.8/bin/nvcc")
+    endif()
+  endif()
 endif()
 
 project(gpu_image_processing LANGUAGES CXX CUDA)
@@ -18,6 +26,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Set CUDA standards and flags
 set(CMAKE_CUDA_STANDARD 14)
 set(CMAKE_CUDA_STANDARD_REQUIRED ON)
+
+# Set CUDA architectures if not already set
+if(NOT DEFINED CMAKE_CUDA_ARCHITECTURES)
+  set(CMAKE_CUDA_ARCHITECTURES 60 70 75 80 86)
+endif()
 
 # Set include directories
 include_directories(
