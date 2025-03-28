@@ -3,6 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![CUDA Version](https://img.shields.io/badge/CUDA-11.0+-green.svg)](https://developer.nvidia.com/cuda-toolkit)
 [![Python](https://img.shields.io/badge/Python-3.7+-blue.svg)](https://www.python.org/)
+[![Build Status](https://github.com/Facadedevil/GPU-Accelerated-Image-Processing-Pipeline/actions/workflows/cmake-single-platform.yml/badge.svg)](https://github.com/Facadedevil/GPU-Accelerated-Image-Processing-Pipeline/actions/workflows/cmake-single-platform.yml)
 
 A high-performance image processing pipeline that leverages GPU acceleration for common operations like Gaussian blur, edge detection, color space conversion, and image sharpening.
 
