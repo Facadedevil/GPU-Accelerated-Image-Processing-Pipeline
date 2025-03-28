@@ -9,7 +9,7 @@ A high-performance image processing pipeline that leverages GPU acceleration for
 [📑 **Comprehensive Wiki Documentation**](https://github.com/Facadedevil/GPU-Accelerated-Image-Processing-Pipeline/wiki)
 
 <p align="center">
-  <img src="https://github.com/Facadedevil/GPU-Accelerated-Image-Processing-Pipeline/assets/your-user-id/image-asset-id.png" alt="Performance Improvement from Memory Coalescing on RTX 4080 Ti" width="700"/>
+  <img src="docs/images/memory_coalescing_performance.png" alt="Performance Improvement from Memory Coalescing on RTX 4080 Ti" width="700"/>
 </p>
 
 ## ⚡ Quick Start
