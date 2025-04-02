@@ -1,0 +1,46 @@
+graph TD
+    ROOT[GPU Image Processing Project] --> CMake[CMakeLists.txt]
+    ROOT --> GITHUB[.github/workflows]
+    ROOT --> SRC[src]
+    ROOT --> INCLUDE[include]
+    ROOT --> EXAMPLES[examples]
+    ROOT --> TESTS[tests]
+    ROOT --> PYTHON[python]
+    ROOT --> SCRIPTS[scripts]
+    ROOT --> DOCS[docs]
+    ROOT --> DATA[data]
+    ROOT --> MAKE[Makefile]
+    ROOT --> README[README.md]
+    ROOT --> LICENSE[LICENSE]
+    
+    SRC --> SRC1[image_processing.cu]
+    SRC --> SRC2[kernels.cu]
+    SRC --> SRC3[benchmarking.cu]
+    SRC --> SRC4[utils.cu]
+    
+    INCLUDE --> INC1[image_processing.h]
+    INCLUDE --> INC2[kernels.h]
+    INCLUDE --> INC3[utils.h]
+    
+    EXAMPLES --> EX1[basic_example.cu]
+    EXAMPLES --> EX2[benchmark_example.cu]
+    
+    TESTS --> TEST1[test_operations.cu]
+    TESTS --> TEST2[test_pipeline.cu]
+    
+    PYTHON --> PY1[image_processor.py]
+    PYTHON --> PY2[pytorch_accl.py]
+    PYTHON --> PY3[benchmarks.py]
+    
+    GITHUB --> GH1[cmake-single-platform.yml]
+    
+    classDef default fill:#f9f9f9,stroke:#333,stroke-width:1px
+    classDef core fill:#e6f7ff,stroke:#1890ff,stroke-width:1px
+    classDef python fill:#f6ffed,stroke:#52c41a,stroke-width:1px
+    classDef build fill:#fff7e6,stroke:#ffa940,stroke-width:1px
+    classDef docs fill:#f9f0ff,stroke:#722ed1,stroke-width:1px
+    
+    class SRC,INCLUDE,SRC1,SRC2,SRC3,SRC4,INC1,INC2,INC3 core
+    class PYTHON,PY1,PY2,PY3 python
+    class CMake,MAKE,GITHUB,GH1 build
+    class README,DOCS docs

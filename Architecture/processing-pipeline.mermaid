@@ -1,0 +1,46 @@
+flowchart TD
+    subgraph HOST["Host (CPU)"]
+        A[Load Image] --> B[Allocate Host Memory]
+        B --> C[Memory Transfer\nHost to Device]
+    end
+    
+    subgraph GPU["GPU Processing"]
+        C --> D1[RGB to Grayscale]
+        C --> D2[Gaussian Blur]
+        D1 --> D3[Edge Detection]
+        D2 --> D4[Image Sharpening]
+        
+        subgraph OPT["Optimized Pipeline"]
+            E1[Fused RGB to Edge]
+            E2[Fused Blur & Sharpen]
+            E3[Stream Processing]
+        end
+    end
+    
+    subgraph RESULT["Result Processing"]
+        D3 --> F[Memory Transfer\nDevice to Host]
+        D4 --> F
+        E1 --> F
+        E2 --> F
+        F --> G[Save/Display Results]
+    end
+    
+    subgraph BENCH["Benchmarking"]
+        H1[Time Measurement]
+        H2[Performance Profiling]
+        H3[Memory Bandwidth Analysis]
+    end
+    
+    classDef standard fill:#f9f9f9,stroke:#333,stroke-width:1px
+    classDef gpu fill:#ffe6e6,stroke:#ff8080,stroke-width:1px
+    classDef opt fill:#e6f7ff,stroke:#1890ff,stroke-width:1px
+    classDef host fill:#f6ffed,stroke:#52c41a,stroke-width:1px
+    classDef result fill:#fff7e6,stroke:#ffa940,stroke-width:1px
+    classDef bench fill:#f5f0ff,stroke:#722ed1,stroke-width:1px
+    
+    class A,B host
+    class C,F standard
+    class D1,D2,D3,D4 gpu
+    class E1,E2,E3 opt
+    class G result
+    class H1,H2,H3 bench

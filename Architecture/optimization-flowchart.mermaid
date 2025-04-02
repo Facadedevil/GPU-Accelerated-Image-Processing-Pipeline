@@ -1,0 +1,47 @@
+```mermaid
+    flowchart TD
+        subgraph MEMOPT["Memory Optimization"]
+            M1[Memory Coalescing]
+            M2[Shared Memory Usage]
+            M3[Texture Memory]
+            
+            M1 -->|"Aligns memory access\npatterns for threads"| M4[Improved Memory Bandwidth]
+            M2 -->|"Reduces global memory\naccess latency"| M4
+            M3 -->|"Caching for 2D\nspatial locality"| M4
+        end
+        
+        subgraph EXECOPT["Execution Optimization"]
+            E1[Kernel Fusion]
+            E2[Stream Processing]
+            E3[Thread Block Optimization]
+            
+            E1 -->|"Reduces kernel\nlaunch overhead"| E4[Improved Execution Efficiency]
+            E2 -->|"Overlaps execution\nand memory transfers"| E4
+            E3 -->|"Balances occupancy\nand shared memory"| E4
+        end
+        
+        subgraph ALGOPT["Algorithm Optimization"]
+            A1[Parallel Algorithm Design]
+            A2[Computation Simplification]
+            A3[Work Distribution]
+            
+            A1 -->|"Maximizes parallel\nexecution"| A4[Algorithmic Speedup]
+            A2 -->|"Reduces operation\ncount"| A4
+            A3 -->|"Prevents thread\ndivergence"| A4
+        end
+        
+        MEMOPT --> PERF[Performance Improvement]
+        EXECOPT --> PERF
+        ALGOPT --> PERF
+        
+        classDef standard fill:#f9f9f9,stroke:#333,stroke-width:1px
+        classDef memory fill:#e6f7ff,stroke:#1890ff,stroke-width:1px
+        classDef execution fill:#fff7e6,stroke:#ffa940,stroke-width:1px
+        classDef algorithm fill:#f6ffed,stroke:#52c41a,stroke-width:1px
+        classDef performance fill:#fff2f0,stroke:#ff4d4f,stroke-width:1px
+        
+        class M1,M2,M3,M4 memory
+        class E1,E2,E3,E4 execution
+        class A1,A2,A3,A4 algorithm
+        class PERF performance
+```
