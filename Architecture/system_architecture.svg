@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f8f9fa" />
+  
+  <!-- Title -->
+  <text x="400" y="30" font-family="Arial" font-size="24" text-anchor="middle" font-weight="bold">GPU Image Processing System Architecture</text>
+  
+  <!-- Main Components -->
+  <g id="cpu-host">
+    <rect x="50" y="80" width="200" height="120" rx="5" fill="#d1e7dd" stroke="#198754" stroke-width="2" />
+    <text x="150" y="110" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">CPU Host</text>
+    <rect x="70" y="120" width="160" height="30" rx="3" fill="#f8f9fa" stroke="#198754" stroke-width="1" />
+    <text x="150" y="140" font-family="Arial" font-size="14" text-anchor="middle">Image Loading/Saving</text>
+    <rect x="70" y="160" width="160" height="30" rx="3" fill="#f8f9fa" stroke="#198754" stroke-width="1" />
+    <text x="150" y="180" font-family="Arial" font-size="14" text-anchor="middle">Memory Management</text>
+  </g>
+  
+  <g id="memory-transfer">
+    <rect x="300" y="80" width="200" height="120" rx="5" fill="#cfe2ff" stroke="#0d6efd" stroke-width="2" />
+    <text x="400" y="110" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Memory Transfer</text>
+    <rect x="320" y="120" width="160" height="30" rx="3" fill="#f8f9fa" stroke="#0d6efd" stroke-width="1" />
+    <text x="400" y="140" font-family="Arial" font-size="14" text-anchor="middle">Host → Device</text>
+    <rect x="320" y="160" width="160" height="30" rx="3" fill="#f8f9fa" stroke="#0d6efd" stroke-width="1" />
+    <text x="400" y="180" font-family="Arial" font-size="14" text-anchor="middle">Device → Host</text>
+  </g>
+  
+  <g id="gpu-processing">
+    <rect x="550" y="80" width="200" height="270" rx="5" fill="#f8d7da" stroke="#dc3545" stroke-width="2" />
+    <text x="650" y="110" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">GPU Processing</text>
+    <rect x="570" y="120" width="160" height="30" rx="3" fill="#f8f9fa" stroke="#dc3545" stroke-width="1" />
+    <text x="650" y="140" font-family="Arial" font-size="14" text-anchor="middle">RGB to Grayscale</text>
+    <rect x="570" y="160" width="160" height="30" rx="3" fill="#f8f9fa" stroke="#dc3545" stroke-width="1" />
+    <text x="650" y="180" font-family="Arial" font-size="14" text-anchor="middle">Gaussian Blur</text>
+    <rect x="570" y="200" width="160" height="30" rx="3" fill="#f8f9fa" stroke="#dc3545" stroke-width="1" />
+    <text x="650" y="220" font-family="Arial" font-size="14" text-anchor="middle">Edge Detection</text>
+    <rect x="570" y="240" width="160" height="30" rx="3" fill="#f8f9fa" stroke="#dc3545" stroke-width="1" />
+    <text x="650" y="260" font-family="Arial" font-size="14" text-anchor="middle">Image Sharpening</text>
+    <rect x="570" y="280" width="160" height="30" rx="3" fill="#f8f9fa" stroke="#dc3545" stroke-width="1" />
+    <text x="650" y="300" font-family="Arial" font-size="14" text-anchor="middle">Fused Operations</text>
+    <rect x="570" y="320" width="160" height="15" rx="2" fill="#f8f9fa" stroke="#dc3545" stroke-width="1" />
+    <text x="650" y="330" font-family="Arial" font-size="10" text-anchor="middle">Kernel Execution</text>
+  </g>
+  
+  <g id="optimizations">
+    <rect x="550" y="360" width="200" height="185" rx="5" fill="#fff3cd" stroke="#ffc107" stroke-width="2" />
+    <text x="650" y="380" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Optimizations</text>
+    <rect x="570" y="390" width="160" height="25" rx="3" fill="#f8f9fa" stroke="#ffc107" stroke-width="1" />
+    <text x="650" y="407" font-family="Arial" font-size="12" text-anchor="middle">Memory Coalescing</text>
+    <rect x="570" y="425" width="160" height="25" rx="3" fill="#f8f9fa" stroke="#ffc107" stroke-width="1" />
+    <text x="650" y="442" font-family="Arial" font-size="12" text-anchor="middle">Shared Memory Usage</text>
+    <rect x="570" y="460" width="160" height="25" rx="3" fill="#f8f9fa" stroke="#ffc107" stroke-width="1" />
+    <text x="650" y="477" font-family="Arial" font-size="12" text-anchor="middle">Kernel Fusion</text>
+    <rect x="570" y="495" width="160" height="25" rx="3" fill="#f8f9fa" stroke="#ffc107" stroke-width="1" />
+    <text x="650" y="512" font-family="Arial" font-size="12" text-anchor="middle">Stream Processing</text>
+  </g>
+  
+  <g id="implementations">
+    <rect x="50" y="240" width="450" height="150" rx="5" fill="#e2e3e5" stroke="#6c757d" stroke-width="2" />
+    <text x="275" y="260" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Implementation Options</text>
+    
+    <g id="python-impl">
+      <rect x="70" y="280" width="200" height="90" rx="5" fill="#f8f9fa" stroke="#6c757d" stroke-width="1" />
+      <text x="170" y="300" font-family="Arial" font-size="14" text-anchor="middle" font-weight="bold">Python Implementation</text>
+      <rect x="80" y="310" width="180" height="25" rx="3" fill="#e2e3e5" stroke="#6c757d" stroke-width="1" opacity="0.5" />
+      <text x="170" y="327" font-family="Arial" font-size="12" text-anchor="middle">PyTorch GPU Tensors</text>
+      <rect x="80" y="340" width="180" height="25" rx="3" fill="#e2e3e5" stroke="#6c757d" stroke-width="1" opacity="0.5" />
+      <text x="170" y="357" font-family="Arial" font-size="12" text-anchor="middle">High-level Abstractions</text>
+    </g>
+    
+    <g id="cuda-impl">
+      <rect x="280" y="280" width="200" height="90" rx="5" fill="#f8f9fa" stroke="#6c757d" stroke-width="1" />
+      <text x="380" y="300" font-family="Arial" font-size="14" text-anchor="middle" font-weight="bold">CUDA Implementation</text>
+      <rect x="290" y="310" width="180" height="25" rx="3" fill="#e2e3e5" stroke="#6c757d" stroke-width="1" opacity="0.5" />
+      <text x="380" y="327" font-family="Arial" font-size="12" text-anchor="middle">Low-level Kernels</text>
+      <rect x="290" y="340" width="180" height="25" rx="3" fill="#e2e3e5" stroke="#6c757d" stroke-width="1" opacity="0.5" />
+      <text x="380" y="357" font-family="Arial" font-size="12" text-anchor="middle">Maximum Performance</text>
+    </g>
+  </g>
+  
+  <g id="benchmarking">
+    <rect x="50" y="400" width="450" height="145" rx="5" fill="#f1deff" stroke="#6f42c1" stroke-width="2" />
+    <text x="275" y="420" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Performance Analysis</text>
+    
+    <rect x="70" y="430" width="200" height="105" rx="5" fill="#f8f9fa" stroke="#6f42c1" stroke-width="1" />
+    <text x="170" y="450" font-family="Arial" font-size="14" text-anchor="middle" font-weight="bold">Benchmarking</text>
+    <rect x="80" y="460" width="180" height="25" rx="3" fill="#f1deff" stroke="#6f42c1" stroke-width="1" opacity="0.5" />
+    <text x="170" y="477" font-family="Arial" font-size="12" text-anchor="middle">Operation Timing</text>
+    <rect x="80" y="490" width="180" height="25" rx="3" fill="#f1deff" stroke="#6f42c1" stroke-width="1" opacity="0.5" />
+    <text x="170" y="507" font-family="Arial" font-size="12" text-anchor="middle">Pipeline Comparisons</text>
+    
+    <rect x="280" y="430" width="200" height="105" rx="5" fill="#f8f9fa" stroke="#6f42c1" stroke-width="1" />
+    <text x="380" y="450" font-family="Arial" font-size="14" text-anchor="middle" font-weight="bold">Profiling</text>
+    <rect x="290" y="460" width="180" height="25" rx="3" fill="#f1deff" stroke="#6f42c1" stroke-width="1" opacity="0.5" />
+    <text x="380" y="477" font-family="Arial" font-size="12" text-anchor="middle">Memory Access Patterns</text>
+    <rect x="290" y="490" width="180" height="25" rx="3" fill="#f1deff" stroke="#6f42c1" stroke-width="1" opacity="0.5" />
+    <text x="380" y="507" font-family="Arial" font-size="12" text-anchor="middle">Execution Bottlenecks</text>
+  </g>
+  
+  <!-- Arrows -->
+  <!-- CPU to Memory Transfer -->
+  <path d="M 250 140 L 300 140" fill="none" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)" />
+  
+  <!-- Memory Transfer to GPU -->
+  <path d="M 500 140 L 550 140" fill="none" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)" />
+  
+  <!-- GPU to Memory Transfer -->
+  <path d="M 550 160 L 500 160" fill="none" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)" />
+  
+  <!-- Memory Transfer to CPU -->
+  <path d="M 300 160 L 250 160" fill="none" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)" />
+  
+  <!-- Optimizations to GPU -->
+  <path d="M 650 360 L 650 350" fill="none" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)" />
+  
+  <!-- Implementation to Memory Transfer -->
+  <path d="M 275 240 L 275 200 L 400, 200" fill="none" stroke="#333" stroke-width="1.5" stroke-dasharray="5,5" />
+  
+  <!-- Arrow marker -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333" />
+    </marker>
+  </defs>
+</svg>
