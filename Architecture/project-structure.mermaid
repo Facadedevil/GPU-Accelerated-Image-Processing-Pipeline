@@ -1,45 +1,46 @@
-flowchart TD
-    subgraph MEMOPT["Memory Optimization"]
-        M1[Memory Coalescing]
-        M2[Shared Memory Usage]
-        M3[Texture Memory]
-        
-        M1 -->|"Aligns memory access\npatterns for threads"| M4[Improved Memory Bandwidth]
-        M2 -->|"Reduces global memory\naccess latency"| M4
-        M3 -->|"Caching for 2D\nspatial locality"| M4
-    end
+graph TD
+    ROOT[GPU Image Processing Project] --> CMake[CMakeLists.txt]
+    ROOT --> GITHUB[.github/workflows]
+    ROOT --> SRC[src]
+    ROOT --> INCLUDE[include]
+    ROOT --> EXAMPLES[examples]
+    ROOT --> TESTS[tests]
+    ROOT --> PYTHON[python]
+    ROOT --> SCRIPTS[scripts]
+    ROOT --> DOCS[docs]
+    ROOT --> DATA[data]
+    ROOT --> MAKE[Makefile]
+    ROOT --> README[README.md]
+    ROOT --> LICENSE[LICENSE]
     
-    subgraph EXECOPT["Execution Optimization"]
-        E1[Kernel Fusion]
-        E2[Stream Processing]
-        E3[Thread Block Optimization]
-        
-        E1 -->|"Reduces kernel\nlaunch overhead"| E4[Improved Execution Efficiency]
-        E2 -->|"Overlaps execution\nand memory transfers"| E4
-        E3 -->|"Balances occupancy\nand shared memory"| E4
-    end
+    SRC --> SRC1[image_processing.cu]
+    SRC --> SRC2[kernels.cu]
+    SRC --> SRC3[benchmarking.cu]
+    SRC --> SRC4[utils.cu]
     
-    subgraph ALGOPT["Algorithm Optimization"]
-        A1[Parallel Algorithm Design]
-        A2[Computation Simplification]
-        A3[Work Distribution]
-        
-        A1 -->|"Maximizes parallel\nexecution"| A4[Algorithmic Speedup]
-        A2 -->|"Reduces operation\ncount"| A4
-        A3 -->|"Prevents thread\ndivergence"| A4
-    end
+    INCLUDE --> INC1[image_processing.h]
+    INCLUDE --> INC2[kernels.h]
+    INCLUDE --> INC3[utils.h]
     
-    MEMOPT --> PERF[Performance Improvement]
-    EXECOPT --> PERF
-    ALGOPT --> PERF
+    EXAMPLES --> EX1[basic_example.cu]
+    EXAMPLES --> EX2[benchmark_example.cu]
     
-    classDef standard fill:#f9f9f9,stroke:#333,stroke-width:1px
-    classDef memory fill:#e6f7ff,stroke:#1890ff,stroke-width:1px
-    classDef execution fill:#fff7e6,stroke:#ffa940,stroke-width:1px
-    classDef algorithm fill:#f6ffed,stroke:#52c41a,stroke-width:1px
-    classDef performance fill:#fff2f0,stroke:#ff4d4f,stroke-width:1px
+    TESTS --> TEST1[test_operations.cu]
+    TESTS --> TEST2[test_pipeline.cu]
     
-    class M1,M2,M3,M4 memory
-    class E1,E2,E3,E4 execution
-    class A1,A2,A3,A4 algorithm
-    class PERF performance
+    PYTHON --> PY1[image_processor.py]
+    PYTHON --> PY2[pytorch_accl.py]
+    PYTHON --> PY3[benchmarks.py]
+    
+    GITHUB --> GH1[cmake-single-platform.yml]
+    
+    classDef default fill:#f9f9f9,stroke:#333,stroke-width:1px
+    classDef core fill:#e6f7ff,stroke:#1890ff,stroke-width:1px
+    classDef python fill:#f6ffed,stroke:#52c41a,stroke-width:1px
+    classDef build fill:#fff7e6,stroke:#ffa940,stroke-width:1px
+    classDef docs fill:#f9f0ff,stroke:#722ed1,stroke-width:1px
+    
+    class SRC,INCLUDE,SRC1,SRC2,SRC3,SRC4,INC1,INC2,INC3 core
+    class PYTHON,PY1,PY2,PY3 python
+    class CMake,MAKE,GITHUB,GH1 build
+    class README,DOCS docs
